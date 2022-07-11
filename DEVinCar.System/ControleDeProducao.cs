@@ -1,35 +1,20 @@
 ﻿using DEVinCar.Library;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-/*
-O sistema também deverá apresentar os seguintes relatórios:
-Listar todos os carros. O usuário deverá informar quais veículos quais tipos de veículos deseja listar:
-Motos/Triciclo
-Carros
-Camionete
-Todos
-Carros disponíveis
-Carros vendidos
-Carro vendido com o maior preço
-Carro vendido com o menor preço
-*/
 
 namespace DEVinCar.System
 {
     public class ControleDeProducao
     {
         private ChassiService _chassiService;
+        private ListagemService _listagemService;
         private List<IVeiculo> _listaDeVeiculos { get; set; }
+
         public IEnumerable<IVeiculo> ListaDeVeiculos { get { return _listaDeVeiculos; } }
 
-        public ControleDeProducao(ChassiService chassiService, List<IVeiculo> listaDeVeiculos)
+        public ControleDeProducao(List<IVeiculo> listaDeVeiculos, ChassiService chassiService, ListagemService listagemService)
         {
+            _listaDeVeiculos = listaDeVeiculos; // new List<IVeiculo>();
             _chassiService = chassiService;
-            _listaDeVeiculos = listaDeVeiculos;
+            _listagemService = listagemService;
         }
 
         public void AdicionarVeiculo(IVeiculo veiculo)
@@ -45,6 +30,36 @@ namespace DEVinCar.System
 
             veiculo.NumeroChassi = numeroChassi;
             _listaDeVeiculos.Add(veiculo);
+        }
+
+        public List<IVeiculo> BuscarListaGeral()
+        {
+            return _listagemService.BuscarListaGeral(_listaDeVeiculos);
+        }
+
+        public List<IVeiculo> BuscarListaPorTipo(EVeiculo tipoVeiculo)
+        {
+            return _listagemService.BuscarListaPorTipo(tipoVeiculo, _listaDeVeiculos);
+        }
+
+        public List<IVeiculo> BuscarListaDeCarrosVendidos()
+        {
+            return _listagemService.BuscarListaDeCarrosVendidos(_listaDeVeiculos);
+        }
+
+        public List<IVeiculo> BuscarListaDeCarrosDisponiveis()
+        {
+            return _listagemService.BuscarListaDeCarrosDisponiveis(_listaDeVeiculos);
+        }
+
+        public List<IVeiculo> BuscarListaPorMaiorPreco()
+        {
+            return _listagemService.BuscarListaPorMaiorPreco(_listaDeVeiculos);
+        }
+
+        public List<IVeiculo> BuscarListaPorMenorPreco()
+        {
+            return _listagemService.BuscarListaPorMenorPreco(_listaDeVeiculos);
         }
     }
 }

@@ -8,7 +8,7 @@ lista.Add(carro);
 lista.Add(moto);
 Console.WriteLine(carro.ListarInformacoes());
 
-Console.WriteLine(carro.GetType()); //DEVinCar.Library.Carro
+Console.WriteLine(carro.GetType().ToString() == "DEVinCar.Library.Carro"); //DEVinCar.Library.Carro
 
 foreach (IVeiculo item in lista)
 {
