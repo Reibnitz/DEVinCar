@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DEVinCar.System", "DEVinCar.System\DEVinCar.System.csproj", "{F69862C6-F122-4968-B71B-2F6EE529867D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DEVinCar.Library", "DEVinCar.Library\DEVinCar.Library.csproj", "{2410266F-EEAE-4D07-A7B0-E9E8C12689AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F69862C6-F122-4968-B71B-2F6EE529867D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F69862C6-F122-4968-B71B-2F6EE529867D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F69862C6-F122-4968-B71B-2F6EE529867D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F69862C6-F122-4968-B71B-2F6EE529867D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2410266F-EEAE-4D07-A7B0-E9E8C12689AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2410266F-EEAE-4D07-A7B0-E9E8C12689AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2410266F-EEAE-4D07-A7B0-E9E8C12689AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2410266F-EEAE-4D07-A7B0-E9E8C12689AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {01BE5222-1B06-4C3C-BCF5-43281C19250A}
+	EndGlobalSection
+EndGlobal
