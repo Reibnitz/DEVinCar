@@ -23,8 +23,9 @@ namespace DEVinCar.Library
             string mensagem = base.ListarInformacoes();
             mensagem +=
                 $"\nPotência: {Potencia}" +
-                $"\n";
-            throw new NotImplementedException();
+                $"\nTipo: {(NumeroDeRodas == 2 ? "Moto" : "Triciclo")}";
+
+            return mensagem;
         }
     }
 }
