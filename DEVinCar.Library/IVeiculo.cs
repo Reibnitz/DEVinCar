@@ -8,7 +8,7 @@
         //DateTime DataDeVenda { get; }
         //string Nome { get; }
         int NumeroChassi { get; set; }
-        public bool FoiVendido { get; set; }
+        public bool FoiVendido { get;}
         //string Placa { get; }
         double Valor { get; }
 

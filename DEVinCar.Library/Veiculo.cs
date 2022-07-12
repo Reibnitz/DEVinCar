@@ -19,7 +19,7 @@ namespace DEVinCar.Library
         public int CpfComprador { get; set; }
         public bool FoiVendido { get; private set; }
 
-        protected Veiculo(string nome, string placa, double valor, string cor, DateTime dataDeFabricacao)
+        public Veiculo(string nome, string placa, double valor, string cor, DateTime dataDeFabricacao)
         {
             Nome = nome;
             Placa = placa;
