@@ -43,7 +43,7 @@ namespace DEVinCar.System
             return listaVeiculosDisponiveis;
         }
 
-        public List<IVeiculo> BuscarListaPorMaiorPreco(List<IVeiculo> listaVeiculos)
+        public List<IVeiculo> BuscarListaVendidosPorMaiorPreco(List<IVeiculo> listaVeiculos)
         {
             List<IVeiculo> listaVeiculosVendidos = BuscarListaDeCarrosVendidos(listaVeiculos);
             List<IVeiculo> listaMaiorPreco = listaVeiculosVendidos.OrderByDescending(veiculo => veiculo.Valor).ToList();
@@ -51,7 +51,7 @@ namespace DEVinCar.System
             return listaMaiorPreco;
         }
 
-        public List<IVeiculo> BuscarListaPorMenorPreco(List<IVeiculo> listaVeiculos)
+        public List<IVeiculo> BuscarListaVendidosPorMenorPreco(List<IVeiculo> listaVeiculos)
         {
             List<IVeiculo> listaVeiculosVendidos = BuscarListaDeCarrosVendidos(listaVeiculos);
             List<IVeiculo> listaMenorPreco = listaVeiculosVendidos.OrderBy(veiculo => veiculo.Valor).ToList();

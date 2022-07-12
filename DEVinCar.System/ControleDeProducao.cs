@@ -52,14 +52,14 @@ namespace DEVinCar.System
             return _listagemService.BuscarListaDeCarrosDisponiveis(_listaDeVeiculos);
         }
 
-        public List<IVeiculo> BuscarListaPorMaiorPreco()
+        public List<IVeiculo> BuscarListaVendidosPorMaiorPreco()
         {
-            return _listagemService.BuscarListaPorMaiorPreco(_listaDeVeiculos);
+            return _listagemService.BuscarListaVendidosPorMaiorPreco(_listaDeVeiculos);
         }
 
-        public List<IVeiculo> BuscarListaPorMenorPreco()
+        public List<IVeiculo> BuscarListaVendidosPorMenorPreco()
         {
-            return _listagemService.BuscarListaPorMenorPreco(_listaDeVeiculos);
+            return _listagemService.BuscarListaVendidosPorMenorPreco(_listaDeVeiculos);
         }
     }
 }
