@@ -8,11 +8,12 @@ namespace DEVinCar.Library
 {
     public class InputInvalidoException : Exception
     {
-        private const string Mensagem = "ERRO - Input inválido";
+        private const string Mensagem = "ERRO - Input inválido {0}";
 
-        public InputInvalidoException() : base(Mensagem)
+        public InputInvalidoException(string? input) : base(string.Format(Mensagem, input))
         {
-
+            if (input == null)
+                input = "";
         }
     }
 }
