@@ -10,14 +10,14 @@ namespace DEVinCar.Library
     {
         public int Potencia { get; set; }
         public int NumeroDePortas { get; set; }
-        public bool EhFlex { get; set; }
+        public string TipoCombustivel { get; set; }
 
-        public Carro(int potencia, int numeroDePortas, bool ehFlex,
+        public Carro(int potencia, int numeroDePortas, string tipoCombustivel,
             string nome, string placa, double valor, string cor, DateTime dataDeFabricacao) : base(nome, placa, valor, cor, dataDeFabricacao)
         {
             Potencia = potencia;
             NumeroDePortas = numeroDePortas;
-            EhFlex = ehFlex;
+            TipoCombustivel = tipoCombustivel;
         }
 
 
@@ -27,9 +27,7 @@ namespace DEVinCar.Library
 
             mensagem +=
                 $"\n      Potência: {Potencia} cv | {NumeroDePortas} portas" +
-                $"\n      Tipo de combustível: ";
-
-            mensagem += EhFlex ? "Flex" : "Gasolina";
+                $"\n      Tipo de combustível: {TipoCombustivel}";
 
             return mensagem;
         }
