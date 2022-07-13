@@ -1,7 +1,6 @@
 ﻿using DEVinCar.Library;
 using DEVinCar.System;
 
-
 ControleDeProducao controleDeProducao = ControleDeProducaoFactory.CriarControleDeProducao();
 VeiculoFactory veiculoFactory = new(controleDeProducao);
 ListaPadrao.CriarLista(veiculoFactory); // Lista de veículos para teste
@@ -18,11 +17,13 @@ while (continuar)
         switch (opcaoVeiculo)
         {
             case EOpcaoTipoVeiculo.MotoTricilo:
-                // TODO criar mensagens para adição de veículos
+                MensagensConsole.CriarMotoTriciclo(veiculoFactory);
                 break;
             case EOpcaoTipoVeiculo.Carro:
+                MensagensConsole.CriarCarro(veiculoFactory);
                 break;
             case EOpcaoTipoVeiculo.Camionete:
+                MensagensConsole.CriarCamionete(veiculoFactory);
                 break;
         }
     }
