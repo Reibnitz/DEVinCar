@@ -16,34 +16,55 @@ namespace DEVinCar.System
             _controleDeProducao = controleDeProducao;
         }
 
-        public Carro CriarCarro(int potencia, int numeroDePortas, string tipoCombustivel,
+        public IVeiculo CriarCarro(int potencia, int numeroDePortas, ETipoCombustivelCarro tipoCombustivel,
             string nome, string placa, double valor, string cor, DateTime dataDeFabricacao)
         {
-            // TODO: adicionar validações
+            VerificarData(dataDeFabricacao);
+            VerificarSeValorEhPositivo(potencia, numeroDePortas, valor);
+            
             Carro carro = new(potencia, numeroDePortas, tipoCombustivel, nome, placa, valor, cor, dataDeFabricacao);
             _controleDeProducao.AdicionarVeiculo(carro);
 
             return carro;
         }
 
-        public MotoTriciclo CriarMotoTriciclo(int potencia, int numeroDeRodas,
+        public IVeiculo CriarMotoTriciclo(int potencia, int numeroDeRodas,
             string nome, string placa, double valor, string cor, DateTime dataDeFabricacao)
         {
-            // TODO: adicionar validações
+            VerificarData(dataDeFabricacao);
+            VerificarSeValorEhPositivo(potencia, valor);
+            
             MotoTriciclo motoTriciclo = new(potencia, numeroDeRodas, nome, placa, valor, cor, dataDeFabricacao);
             _controleDeProducao.AdicionarVeiculo(motoTriciclo);
 
             return motoTriciclo;
         }
 
-        public Camionete CriarCamionete(int numeroDePortas, int capacidadeDaCacamba, int potencia, string tipoCombustivel,
+        public IVeiculo CriarCamionete(int numeroDePortas, int capacidadeDaCacamba, int potencia, ETipoCombustivelCamionete tipoCombustivel,
             string nome, string placa, double valor, DateTime dataDeFabricacao)
         {
-            // TODO: adicionar validações
+            VerificarData(dataDeFabricacao);
+            VerificarSeValorEhPositivo(potencia, numeroDePortas, valor, capacidadeDaCacamba);
+            
             Camionete camionete = new(numeroDePortas, capacidadeDaCacamba, potencia, tipoCombustivel, nome, placa, valor, dataDeFabricacao);
             _controleDeProducao.AdicionarVeiculo(camionete);
 
             return camionete;
+        }
+
+        private void VerificarData(DateTime dataDeFabricacao)
+        {
+            if (dataDeFabricacao > DateTime.Now)
+                throw new ArgumentException("ERRO - A data de fabricação não pode ser maior que a data atual", nameof(dataDeFabricacao));
+        }
+
+        private void VerificarSeValorEhPositivo(params double[] valores)
+        {
+            foreach (var valor in valores)
+            {
+                if (valor <= 0)
+                    throw new ArgumentOutOfRangeException($"O valor de {nameof(valor)} deve ser maior que zero", nameof(valor));
+            }
         }
     }
 }
