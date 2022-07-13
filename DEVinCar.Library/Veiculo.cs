@@ -49,16 +49,15 @@ namespace DEVinCar.Library
         public virtual string ListarInformacoes()
         {
             string mensagem = 
-                $"Nome do veículo: {Nome}" +
-                $"\nPreço: R$ {Valor}" +
-                $"\nPlaca: {Placa}" +
-                $"\nCor: {Cor};" +
-                $"\nData de fabricação: {DataDeFabricacao.ToShortDateString()}";
-
-            if (CpfComprador != 0)
-                mensagem += $"\nCPF do comprador: {CpfComprador}";
+                $"\n      Nome do veículo: {Nome} | Preço: R$ {Valor}" +
+                $"\n      Placa: {Placa} | Chassi: {NumeroChassi}";
 
             return mensagem;
+        }
+
+        public override string ToString()
+        {
+            return ListarInformacoes();
         }
     }
 } 

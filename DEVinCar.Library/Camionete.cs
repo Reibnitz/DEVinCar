@@ -26,10 +26,8 @@ namespace DEVinCar.Library
         {
             string mensagem = base.ListarInformacoes();
             mensagem +=
-                $"\nNúmero de portas: {NumeroDePortas}" +
-                $"\nPotência: {Potencia} cv" +
-                $"\nCapacidade da caçamba: {CapacidadeDaCacamba} litros" +
-                $"\nTipo de combustível: {TipoCombustivel}";
+                $"\n      Potência: {Potencia} cv | {NumeroDePortas} portas" +
+                $"\n      Capacidade da caçamba: {CapacidadeDaCacamba} litros | Tipo de combustível: {TipoCombustivel}";
 
             return mensagem;
         }

@@ -26,9 +26,8 @@ namespace DEVinCar.Library
             string mensagem = base.ListarInformacoes();
 
             mensagem +=
-                $"\nPotência: {Potencia} cv" +
-                $"\nNúmero de portas: {NumeroDePortas}" +
-                $"\nTipo de combustível: ";
+                $"\n      Potência: {Potencia} cv | {NumeroDePortas} portas" +
+                $"\n      Tipo de combustível: ";
 
             mensagem += EhFlex ? "Flex" : "Gasolina";
 
