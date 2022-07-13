@@ -16,17 +16,17 @@ namespace DEVinCar.System
             _controleDeProducao = controleDeProducao;
         }
 
-        public IVeiculo CriarCarro(int potencia, int numeroDePortas, bool ehFlex,
+        public Carro CriarCarro(int potencia, int numeroDePortas, string tipoCombustivel,
             string nome, string placa, double valor, string cor, DateTime dataDeFabricacao)
         {
             // TODO: adicionar validações
-            Carro carro = new(potencia, numeroDePortas, ehFlex, nome, placa, valor, cor, dataDeFabricacao);
+            Carro carro = new(potencia, numeroDePortas, tipoCombustivel, nome, placa, valor, cor, dataDeFabricacao);
             _controleDeProducao.AdicionarVeiculo(carro);
 
             return carro;
         }
 
-        public IVeiculo CriarMotoTriciclo(int potencia, int numeroDeRodas,
+        public MotoTriciclo CriarMotoTriciclo(int potencia, int numeroDeRodas,
             string nome, string placa, double valor, string cor, DateTime dataDeFabricacao)
         {
             // TODO: adicionar validações
@@ -36,11 +36,11 @@ namespace DEVinCar.System
             return motoTriciclo;
         }
 
-        public IVeiculo CriarCamionete(int numeroDePortas, int capacidadeDaCacamba, int potencia, string tipoCombustivel,
-            string nome, string placa, double valor, string cor, DateTime dataDeFabricacao)
+        public Camionete CriarCamionete(int numeroDePortas, int capacidadeDaCacamba, int potencia, string tipoCombustivel,
+            string nome, string placa, double valor, DateTime dataDeFabricacao)
         {
             // TODO: adicionar validações
-            Camionete camionete = new(numeroDePortas, capacidadeDaCacamba, potencia, tipoCombustivel, nome, placa, valor, cor, dataDeFabricacao);
+            Camionete camionete = new(numeroDePortas, capacidadeDaCacamba, potencia, tipoCombustivel, nome, placa, valor, dataDeFabricacao);
             _controleDeProducao.AdicionarVeiculo(camionete);
 
             return camionete;
