@@ -12,10 +12,10 @@ namespace DEVinCar.Library
         public int NumeroDePortas { get; set; }
         public int CapacidadeDaCacamba { get; set; }
         public int Potencia { get; set; }
-        public string TipoCombustivel { get; set; } // ??
+        public ETipoCombustivelCamionete TipoCombustivel { get; set; } // ??
         public const string Cor = "roxa";
 
-        public Camionete(int numeroDePortas, int capacidadeDaCacamba, int potencia, string tipoCombustivel,
+        public Camionete(int numeroDePortas, int capacidadeDaCacamba, int potencia, ETipoCombustivelCamionete tipoCombustivel,
             string nome, string placa, double valor, DateTime dataDeFabricacao) : base(nome, placa, valor, Cor, dataDeFabricacao)
         {
             NumeroDePortas = numeroDePortas;

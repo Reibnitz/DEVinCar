@@ -12,4 +12,16 @@ namespace DEVinCar.Library
         Camionete,
         MotoTricilo
     }
+
+    public enum ETipoCombustivelCarro
+    {
+        Gasolina = 1,
+        Flex
+    }
+
+    public enum ETipoCombustivelCamionete
+    {
+        Gasolina = 1,
+        Diesel
+    }
 }
