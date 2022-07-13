@@ -16,13 +16,13 @@ namespace DEVinCar.System
             switch (tipoVeiculo)
             {
                 case EVeiculo.Carro:
-                    listaVeiculosPorTipo = listaVeiculos.Where(veiculo => typeof(Veiculo).ToString() == "DEVinCar.Library.Carro").ToList();
+                    listaVeiculosPorTipo = listaVeiculos.Where(veiculo => veiculo.GetType().ToString() == "DEVinCar.Library.Carro").ToList();
                     break;
                 case EVeiculo.Camionete:
-                    listaVeiculosPorTipo = listaVeiculos.Where(veiculo => typeof(Veiculo).ToString() == "DEVinCar.Library.Camionete").ToList();
+                    listaVeiculosPorTipo = listaVeiculos.Where(veiculo => veiculo.GetType().ToString() == "DEVinCar.Library.Camionete").ToList();
                     break;
                 case EVeiculo.MotoTricilo:
-                    listaVeiculosPorTipo = listaVeiculos.Where(veiculo => typeof(Veiculo).ToString() == "DEVinCar.Library.MotoTriciclo").ToList();
+                    listaVeiculosPorTipo = listaVeiculos.Where(veiculo => veiculo.GetType().ToString() == "DEVinCar.Library.MotoTriciclo").ToList();
                     break;
             }
 
