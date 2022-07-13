@@ -67,7 +67,7 @@ namespace DEVinCar.System
             DateTime dataDeFabricacao = DefinirData("   Informe a data de fabricação [dd/mm/aaaa]: ");
             int potencia = (int)DefinirValorNumerico("   Informe a potência: ");
             int numeroDePortas = (int)DefinirValorNumerico("   Informe o número de portas: ");
-            string tipoCombustivel = DefinirValorTexto("   Informe o tipo de combustível [gasolina / flex]: ");
+            ETipoCombustivelCarro tipoCombustivel = (ETipoCombustivelCarro)DefinirCombustivel("   Informe o tipo de combustível [1] Gasolina | [2] Flex: ");
 
             IVeiculo carro = veiculoFactory.CriarCarro(potencia, numeroDePortas, tipoCombustivel, nome, placa, valor, cor, dataDeFabricacao);
 
@@ -84,7 +84,7 @@ namespace DEVinCar.System
             int numeroDePortas = (int)DefinirValorNumerico("   Informe o número de portas: ");
             int capacidadeDaCacamba = (int)DefinirValorNumerico("   Informe a capacidade da caçamba: ");
             int potencia = (int)DefinirValorNumerico("   Informe a potência: ");
-            string tipoCombustivel = DefinirValorTexto("   Informe o tipo de combustível [gasolina / diesel]: ");
+            ETipoCombustivelCamionete tipoCombustivel = (ETipoCombustivelCamionete)DefinirCombustivel("   Informe o tipo de combustível [1] Gasolina | [2] Diesel: ");
 
             IVeiculo camionete = veiculoFactory.CriarCamionete(numeroDePortas, capacidadeDaCacamba, potencia, tipoCombustivel, nome, placa, valor, dataDeFabricacao);
 
@@ -135,6 +135,14 @@ namespace DEVinCar.System
                 throw new InputInvalidoException(valorTexto);
 
             return valorTexto;
+        }
+
+        private static int DefinirCombustivel(string mensagem)
+        {
+            Console.Write(mensagem);
+            int valorInformado = VerificarInput(limite: 2);
+
+            return valorInformado;
         }
 
         public static EOpcaoListagem EscolherOpcaoDeListagem()

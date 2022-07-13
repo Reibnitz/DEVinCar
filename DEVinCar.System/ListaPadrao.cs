@@ -11,9 +11,9 @@ namespace DEVinCar.System
     {
         internal static void CriarLista(VeiculoFactory veiculoFactory)
         {
-            IVeiculo carro1 = veiculoFactory.CriarCarro(120, 4, "Gasolina", "Uno", "CCC-0001", 30000, "Vermelha", DateTime.Now);
-            IVeiculo carro2 = veiculoFactory.CriarCarro(100, 2, "Flex", "Ka", "CCC-0002", 40000, "Azul", DateTime.Now);
-            IVeiculo carro3 = veiculoFactory.CriarCarro(140, 4, "Flex", "HB20", "CCC-0003", 50000, "Preta", DateTime.Now);
+            IVeiculo carro1 = veiculoFactory.CriarCarro(120, 4, ETipoCombustivelCarro.Gasolina, "Uno", "CCC-0001", 30000, "Vermelha", DateTime.Now);
+            IVeiculo carro2 = veiculoFactory.CriarCarro(100, 2, ETipoCombustivelCarro.Flex, "Ka", "CCC-0002", 40000, "Azul", DateTime.Now);
+            IVeiculo carro3 = veiculoFactory.CriarCarro(140, 4, ETipoCombustivelCarro.Flex, "HB20", "CCC-0003", 50000, "Preta", DateTime.Now);
             carro1.VenderVeiculo(DateTime.Now, 123123123);
             carro3.VenderVeiculo(DateTime.Now, 123123123);
 
@@ -24,9 +24,9 @@ namespace DEVinCar.System
             moto2.VenderVeiculo(DateTime.Now, 12312313);
             moto3.VenderVeiculo(DateTime.Now, 12312313);
 
-            IVeiculo camionete1 = veiculoFactory.CriarCamionete(4, 40, 130, "Gasolina", "Saveiro", "CAM-0001", 80000, DateTime.Now);
-            IVeiculo camionete2 = veiculoFactory.CriarCamionete(4, 40, 130, "Diesel", "Hilux", "CAM-0002", 180000, DateTime.Now);
-            IVeiculo camionete3 = veiculoFactory.CriarCamionete(4, 40, 130, "Diesel", "Ranger", "CAM-0003", 120000, DateTime.Now);
+            IVeiculo camionete1 = veiculoFactory.CriarCamionete(4, 40, 130, ETipoCombustivelCamionete.Gasolina, "Saveiro", "CAM-0001", 80000, DateTime.Now);
+            IVeiculo camionete2 = veiculoFactory.CriarCamionete(4, 40, 130, ETipoCombustivelCamionete.Diesel, "Hilux", "CAM-0002", 180000, DateTime.Now);
+            IVeiculo camionete3 = veiculoFactory.CriarCamionete(4, 40, 130, ETipoCombustivelCamionete.Diesel, "Ranger", "CAM-0003", 120000, DateTime.Now);
             camionete1.VenderVeiculo(DateTime.Now, 123123123);
             camionete2.VenderVeiculo(DateTime.Now, 123123123);
         }
