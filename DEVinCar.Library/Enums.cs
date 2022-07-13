@@ -10,6 +10,6 @@ namespace DEVinCar.Library
     {
         Carro = 1,
         Camionete,
-        MotoETriciclo
+        MotoTricilo
     }
 }

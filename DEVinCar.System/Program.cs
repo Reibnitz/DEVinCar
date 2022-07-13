@@ -6,22 +6,15 @@ ControleDeProducao controleDeProducao = ControleDeProducaoFactory.CriarControleD
 VeiculoFactory veiculoFactory = new(controleDeProducao);
 ListaPadrao.CriarLista(veiculoFactory); // Lista de veículos para teste
 
-
-List<IVeiculo> lista = controleDeProducao.BuscarListaVendidosPorMaiorPreco();
-
-foreach (var item in lista)
+bool continuar = true;
+while (continuar)
 {
-    Console.WriteLine(item.ListarInformacoes());
-}
-
-
-
-while (true)
-{
+    Console.Clear();
     EOpcaoInicial opcaoInicial = MensagensConsole.EscolherOpcaoInicial();
     if (opcaoInicial == EOpcaoInicial.AdicionarVeiculo)
     {
         EOpcaoTipoVeiculo opcaoVeiculo = MensagensConsole.EscolherOpcaoDeVeiculoParaAdicionar();
+
         switch (opcaoVeiculo)
         {
             case EOpcaoTipoVeiculo.MotoTricilo:
@@ -36,25 +29,39 @@ while (true)
     if (opcaoInicial == EOpcaoInicial.ListarVeiculos)
     {
         EOpcaoListagem opcaoListagem = MensagensConsole.EscolherOpcaoDeListagem();
+        List<IVeiculo> listaFiltrada = null;
+
         switch (opcaoListagem)
         {
-            // TODO adicionar método ToString às listagens
-
             case EOpcaoListagem.Todos:
-                controleDeProducao.BuscarListaGeral();
+                listaFiltrada = controleDeProducao.BuscarListaGeral();
+                break;
+
+            case EOpcaoListagem.MotoTricilo:
+                listaFiltrada = controleDeProducao.BuscarListaPorTipo(EVeiculo.MotoTricilo);
+                break;
+
+            case EOpcaoListagem.Carros:
+                listaFiltrada = controleDeProducao.BuscarListaPorTipo(EVeiculo.Carro);
+                break;
+
+            case EOpcaoListagem.Camionetes:
+                listaFiltrada = controleDeProducao.BuscarListaPorTipo(EVeiculo.Camionete);
                 break;
 
             case EOpcaoListagem.Disponiveis:
-                controleDeProducao.BuscarListaDeCarrosDisponiveis();
+                listaFiltrada = controleDeProducao.BuscarListaDeCarrosDisponiveis();
                 break;
 
             case EOpcaoListagem.Vendidos:
                 EOpcaoOrdenacao opcaoOrdenacao = MensagensConsole.EscolherOpcaoDeOrdenacao();
                 if (opcaoOrdenacao == EOpcaoOrdenacao.Crescente)
-                    controleDeProducao.BuscarListaVendidosPorMenorPreco();
+                    listaFiltrada = controleDeProducao.BuscarListaVendidosPorMenorPreco();
                 if (opcaoOrdenacao == EOpcaoOrdenacao.Decrescente)
-                    controleDeProducao.BuscarListaVendidosPorMaiorPreco();
+                    listaFiltrada = controleDeProducao.BuscarListaVendidosPorMaiorPreco();
                 break;
         }
+        listaFiltrada.ForEach(veiculo => Console.WriteLine(veiculo));
     }
+    continuar = MensagensConsole.DesejaContinuar();
 }

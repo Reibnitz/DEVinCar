@@ -17,6 +17,9 @@
     public enum EOpcaoListagem
     {
         Todos = 1,
+        MotoTricilo,
+        Carros,
+        Camionetes,
         Disponiveis,
         Vendidos
     }

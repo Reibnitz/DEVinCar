@@ -21,7 +21,7 @@ namespace DEVinCar.System
                 case EVeiculo.Camionete:
                     listaVeiculosPorTipo = listaVeiculos.Where(veiculo => typeof(Veiculo).ToString() == "DEVinCar.Library.Camionete").ToList();
                     break;
-                case EVeiculo.MotoETriciclo:
+                case EVeiculo.MotoTricilo:
                     listaVeiculosPorTipo = listaVeiculos.Where(veiculo => typeof(Veiculo).ToString() == "DEVinCar.Library.MotoTriciclo").ToList();
                     break;
             }
