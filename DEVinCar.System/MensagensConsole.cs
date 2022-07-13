@@ -33,13 +33,108 @@ namespace DEVinCar.System
         {
             Console.WriteLine("\n   Adicionar veículo\n");
             Console.WriteLine("     [1] Moto/Triciclo");
-            Console.WriteLine("     [2] Carro");  
+            Console.WriteLine("     [2] Carro");
             Console.WriteLine("     [3] Camionete");
             Console.Write("\n   Escolha a opção desejada: ");
 
             int opcaoEscolhida = VerificarInput(limite: 3);
 
             return (EOpcaoTipoVeiculo)opcaoEscolhida;
+        }
+
+        public static void CriarMotoTriciclo(VeiculoFactory veiculoFactory)
+        {
+            string nome = DefinirValorTexto("   Informe o modelo: ");
+            string placa = DefinirValorTexto("   Informe a placa: ");
+            double valor = DefinirValorNumerico("   Informe o preço: ");
+            string cor = DefinirValorTexto("   Informe a cor: ");
+            DateTime dataDeFabricacao = DefinirData("   Informe a data de fabricação [dd/mm/aaaa]: ");
+            int potencia = (int)DefinirValorNumerico("   Informe a potência: ");
+            int numeroRodas = (int)DefinirValorNumerico("   Informe o número de rodas: ");
+
+            IVeiculo motoTriciclo = veiculoFactory.CriarMotoTriciclo(potencia, numeroRodas, nome, placa, valor, cor, dataDeFabricacao);
+
+            Console.WriteLine("\n   Veículo adicionado com sucesso");
+            Console.WriteLine($"        {motoTriciclo}");
+        }
+
+        public static void CriarCarro(VeiculoFactory veiculoFactory)
+        {
+            string nome = DefinirValorTexto("   Informe o modelo: ");
+            string placa = DefinirValorTexto("   Informe a placa: ");
+            double valor = DefinirValorNumerico("   Informe o preço: ");
+            string cor = DefinirValorTexto("   Informe a cor: ");
+            DateTime dataDeFabricacao = DefinirData("   Informe a data de fabricação [dd/mm/aaaa]: ");
+            int potencia = (int)DefinirValorNumerico("   Informe a potência: ");
+            int numeroDePortas = (int)DefinirValorNumerico("   Informe o número de portas: ");
+            string tipoCombustivel = DefinirValorTexto("   Informe o tipo de combustível [gasolina / flex]: ");
+
+            IVeiculo carro = veiculoFactory.CriarCarro(potencia, numeroDePortas, tipoCombustivel, nome, placa, valor, cor, dataDeFabricacao);
+
+            Console.WriteLine("\n   Veículo adicionado com sucesso");
+            Console.WriteLine($"        {carro}");
+        }
+
+        public static void CriarCamionete(VeiculoFactory veiculoFactory)
+        {
+            string nome = DefinirValorTexto("   Informe o modelo: ");
+            string placa = DefinirValorTexto("   Informe a placa: ");
+            double valor = DefinirValorNumerico("   Informe o preço: ");
+            DateTime dataDeFabricacao = DefinirData("   Informe a data de fabricação [dd/mm/aaaa]: ");
+            int numeroDePortas = (int)DefinirValorNumerico("   Informe o número de portas: ");
+            int capacidadeDaCacamba = (int)DefinirValorNumerico("   Informe a capacidade da caçamba: ");
+            int potencia = (int)DefinirValorNumerico("   Informe a potência: ");
+            string tipoCombustivel = DefinirValorTexto("   Informe o tipo de combustível [gasolina / diesel]: ");
+
+            IVeiculo camionete = veiculoFactory.CriarCamionete(numeroDePortas, capacidadeDaCacamba, potencia, tipoCombustivel, nome, placa, valor, dataDeFabricacao);
+
+            Console.WriteLine("\n   Veículo adicionado com sucesso");
+            Console.WriteLine($"        {camionete}");
+        }
+
+        //private static T TratarInput<T>(string mensagem) where T : ISpanFormattable
+        //{
+        //    Console.Write(mensagem);
+        //    bool respostaValida = T.TryParse(Console.ReadLine(), out T output);
+        //    if (!respostaValida)
+        //        throw new InputInvalidoException();
+
+        //    return output;
+        //}
+
+        private static DateTime DefinirData(string mensagem)
+        {
+            Console.Write(mensagem);
+            string? input = Console.ReadLine();
+
+            bool respostaValida = DateTime.TryParse(input, out DateTime data);
+            if (!respostaValida)
+                throw new InputInvalidoException(input);
+
+            return data;
+        }
+
+        private static double DefinirValorNumerico(string mensagem)
+        {
+            Console.Write(mensagem);
+            string? input = Console.ReadLine();
+
+            bool respostaValida = double.TryParse(input, out double valor);
+            if (!respostaValida)
+                throw new InputInvalidoException(input);
+
+            return valor;
+        }
+
+        private static string DefinirValorTexto(string mensagem)
+        {
+            Console.Write(mensagem);
+
+            string? valorTexto = Console.ReadLine();
+            if (valorTexto == null)
+                throw new InputInvalidoException(valorTexto);
+
+            return valorTexto;
         }
 
         public static EOpcaoListagem EscolherOpcaoDeListagem()
@@ -84,9 +179,11 @@ namespace DEVinCar.System
 
         private static int VerificarInput(int limite)
         {
-            bool respostaValida = int.TryParse(Console.ReadLine(), out int opcaoEscolhida);
+            string? input = Console.ReadLine();
+            bool respostaValida = int.TryParse(input, out int opcaoEscolhida);
+
             if (!respostaValida)
-                throw new InputInvalidoException();
+                throw new InputInvalidoException(input);
             if (opcaoEscolhida > limite)
                 throw new OpcaoNaoExistenteException(opcaoEscolhida);
 
