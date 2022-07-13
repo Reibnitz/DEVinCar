@@ -3,66 +3,76 @@ using DEVinCar.System;
 
 ControleDeProducao controleDeProducao = ControleDeProducaoFactory.CriarControleDeProducao();
 VeiculoFactory veiculoFactory = new(controleDeProducao);
-ListaPadrao.CriarLista(veiculoFactory); // Lista de veículos para teste
+ListaPadrao.CriarLista(veiculoFactory);
 
 bool continuar = true;
 while (continuar)
 {
-    Console.Clear();
-    EOpcaoInicial opcaoInicial = MensagensConsole.EscolherOpcaoInicial();
-    if (opcaoInicial == EOpcaoInicial.AdicionarVeiculo)
+    try
     {
-        EOpcaoTipoVeiculo opcaoVeiculo = MensagensConsole.EscolherOpcaoDeVeiculoParaAdicionar();
-
-        switch (opcaoVeiculo)
+        Console.Clear();
+        EOpcaoInicial opcaoInicial = MensagensConsole.EscolherOpcaoInicial();
+        if (opcaoInicial == EOpcaoInicial.AdicionarVeiculo)
         {
-            case EOpcaoTipoVeiculo.MotoTricilo:
-                MensagensConsole.CriarMotoTriciclo(veiculoFactory);
-                break;
-            case EOpcaoTipoVeiculo.Carro:
-                MensagensConsole.CriarCarro(veiculoFactory);
-                break;
-            case EOpcaoTipoVeiculo.Camionete:
-                MensagensConsole.CriarCamionete(veiculoFactory);
-                break;
+            EOpcaoTipoVeiculo opcaoVeiculo = MensagensConsole.EscolherOpcaoDeVeiculoParaAdicionar();
+
+            switch (opcaoVeiculo)
+            {
+                case EOpcaoTipoVeiculo.MotoTricilo:
+                    MensagensConsole.CriarMotoTriciclo(veiculoFactory);
+                    break;
+                case EOpcaoTipoVeiculo.Carro:
+                    MensagensConsole.CriarCarro(veiculoFactory);
+                    break;
+                case EOpcaoTipoVeiculo.Camionete:
+                    MensagensConsole.CriarCamionete(veiculoFactory);
+                    break;
+            }
+        }
+        if (opcaoInicial == EOpcaoInicial.ListarVeiculos)
+        {
+            EOpcaoListagem opcaoListagem = MensagensConsole.EscolherOpcaoDeListagem();
+            List<IVeiculo> listaFiltrada = null;
+
+            switch (opcaoListagem)
+            {
+                case EOpcaoListagem.Todos:
+                    listaFiltrada = controleDeProducao.BuscarListaGeral();
+                    break;
+
+                case EOpcaoListagem.MotoTricilo:
+                    listaFiltrada = controleDeProducao.BuscarListaPorTipo(EVeiculo.MotoTricilo);
+                    break;
+
+                case EOpcaoListagem.Carros:
+                    listaFiltrada = controleDeProducao.BuscarListaPorTipo(EVeiculo.Carro);
+                    break;
+
+                case EOpcaoListagem.Camionetes:
+                    listaFiltrada = controleDeProducao.BuscarListaPorTipo(EVeiculo.Camionete);
+                    break;
+
+                case EOpcaoListagem.Disponiveis:
+                    listaFiltrada = controleDeProducao.BuscarListaDeCarrosDisponiveis();
+                    break;
+
+                case EOpcaoListagem.Vendidos:
+                    EOpcaoOrdenacao opcaoOrdenacao = MensagensConsole.EscolherOpcaoDeOrdenacao();
+                    if (opcaoOrdenacao == EOpcaoOrdenacao.Crescente)
+                        listaFiltrada = controleDeProducao.BuscarListaVendidosPorMenorPreco();
+                    if (opcaoOrdenacao == EOpcaoOrdenacao.Decrescente)
+                        listaFiltrada = controleDeProducao.BuscarListaVendidosPorMaiorPreco();
+                    break;
+            }
+            listaFiltrada.ForEach(veiculo => Console.WriteLine(veiculo));
         }
     }
-    if (opcaoInicial == EOpcaoInicial.ListarVeiculos)
+    catch (Exception e)
     {
-        EOpcaoListagem opcaoListagem = MensagensConsole.EscolherOpcaoDeListagem();
-        List<IVeiculo> listaFiltrada = null;
-
-        switch (opcaoListagem)
-        {
-            case EOpcaoListagem.Todos:
-                listaFiltrada = controleDeProducao.BuscarListaGeral();
-                break;
-
-            case EOpcaoListagem.MotoTricilo:
-                listaFiltrada = controleDeProducao.BuscarListaPorTipo(EVeiculo.MotoTricilo);
-                break;
-
-            case EOpcaoListagem.Carros:
-                listaFiltrada = controleDeProducao.BuscarListaPorTipo(EVeiculo.Carro);
-                break;
-
-            case EOpcaoListagem.Camionetes:
-                listaFiltrada = controleDeProducao.BuscarListaPorTipo(EVeiculo.Camionete);
-                break;
-
-            case EOpcaoListagem.Disponiveis:
-                listaFiltrada = controleDeProducao.BuscarListaDeCarrosDisponiveis();
-                break;
-
-            case EOpcaoListagem.Vendidos:
-                EOpcaoOrdenacao opcaoOrdenacao = MensagensConsole.EscolherOpcaoDeOrdenacao();
-                if (opcaoOrdenacao == EOpcaoOrdenacao.Crescente)
-                    listaFiltrada = controleDeProducao.BuscarListaVendidosPorMenorPreco();
-                if (opcaoOrdenacao == EOpcaoOrdenacao.Decrescente)
-                    listaFiltrada = controleDeProducao.BuscarListaVendidosPorMaiorPreco();
-                break;
-        }
-        listaFiltrada.ForEach(veiculo => Console.WriteLine(veiculo));
+        Console.WriteLine(e.Message, e.StackTrace);
     }
-    continuar = MensagensConsole.DesejaContinuar();
+    finally
+    {
+        continuar = MensagensConsole.DesejaContinuar();
+    }
 }
