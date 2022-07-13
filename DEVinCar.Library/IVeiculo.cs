@@ -2,14 +2,8 @@
 {
     public interface IVeiculo
     {
-        //string Cor { get; }
-        //int CpfComprador { get; }
-        //DateTime DataDeFabricacao { get; }
-        //DateTime DataDeVenda { get; }
-        //string Nome { get; }
         int NumeroChassi { get; set; }
         public bool FoiVendido { get;}
-        //string Placa { get; }
         double Valor { get; }
 
         void AlterarCor(string novaCor);
