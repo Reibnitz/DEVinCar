@@ -22,7 +22,7 @@ namespace DEVinCar.Library
             return chassiNumero;
         }
 
-        public bool VerificarNumero(int numeroChassi, List<IVeiculo> listaVeiculos)
+        public bool VerificarNumero(int numeroChassi, IEnumerable<IVeiculo> listaVeiculos)
         {
             IVeiculo? buscaDeVeiculo = listaVeiculos.FirstOrDefault(veiculo => veiculo.NumeroChassi == numeroChassi);
 
