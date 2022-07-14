@@ -2,7 +2,7 @@
 using DEVinCar.System;
 
 IControleDeProducao controleDeProducao = ControleDeProducaoFactory.CriarControleDeProducao();
-VeiculoFactory veiculoFactory = new(controleDeProducao);
+IVeiculoFactory veiculoFactory = new VeiculoFactory(controleDeProducao);
 ListaPadrao.CriarLista(veiculoFactory);
 
 bool continuar = true;
@@ -68,9 +68,12 @@ while (continuar)
             listaFiltrada.ForEach(veiculo => Console.WriteLine(veiculo));
         }
     }
-    catch (Exception e)
+    catch (Exception ex)
     {
-        Console.WriteLine(e.Message, e.StackTrace);
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($"\n     {ex.Message}\n");
+        Console.ForegroundColor = ConsoleColor.Gray;
+        Console.WriteLine(ex.StackTrace);
     }
     finally
     {

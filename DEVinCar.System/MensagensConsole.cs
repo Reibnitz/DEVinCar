@@ -11,6 +11,7 @@ namespace DEVinCar.System
     {
         public static EOpcaoInicial EscolherOpcaoInicial()
         {
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine
             ("   ___     ___   __   __    _              ___                   \n" +
             "  |   \\   | __|  \\ \\ / /   (_)    _ _     / __|   __ _      _ _\n" +
@@ -19,6 +20,7 @@ namespace DEVinCar.System
             "_|\"\"\"\"\"|_|\"\"\"\"\"|_| \"\"\"\"|_|\"\"\"\"\"|_|\"\"\"\"\"|_|\"\"\"\"\"|_|\"\"\"\"\"|_|\"\"\"\"\"|\n" +
             "\"`-0-0-'\"`-0-0-'\"`-0-0-'\"`-0-0-'\"`-0-0-'\"`-0-0-'\"`-0-0-'\"`-0-0-' ");
 
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("\n   Sistema de controle de veículos\n");
             Console.WriteLine("     [1] Adicionar veículo");
             Console.WriteLine("     [2] Buscar veículos no sistema");
@@ -42,7 +44,7 @@ namespace DEVinCar.System
             return (EOpcaoTipoVeiculo)opcaoEscolhida;
         }
 
-        public static void CriarMotoTriciclo(VeiculoFactory veiculoFactory)
+        public static void CriarMotoTriciclo(IVeiculoFactory veiculoFactory)
         {
             string nome = DefinirValorTexto("   Informe o modelo: ");
             string placa = DefinirValorTexto("   Informe a placa: ");
@@ -58,7 +60,7 @@ namespace DEVinCar.System
             Console.WriteLine($"        {motoTriciclo}");
         }
 
-        public static void CriarCarro(VeiculoFactory veiculoFactory)
+        public static void CriarCarro(IVeiculoFactory veiculoFactory)
         {
             string nome = DefinirValorTexto("   Informe o modelo: ");
             string placa = DefinirValorTexto("   Informe a placa: ");
@@ -75,7 +77,7 @@ namespace DEVinCar.System
             Console.WriteLine($"        {carro}");
         }
 
-        public static void CriarCamionete(VeiculoFactory veiculoFactory)
+        public static void CriarCamionete(IVeiculoFactory veiculoFactory)
         {
             string nome = DefinirValorTexto("   Informe o modelo: ");
             string placa = DefinirValorTexto("   Informe a placa: ");
