@@ -22,7 +22,7 @@ namespace DEVinCar.Library
         {
             string mensagem = base.ListarInformacoes();
             mensagem +=
-                $"\n      Tipo: {(NumeroDeRodas == 2 ? "Moto" : "Triciclo")} | Potência: {Potencia}";
+                $"\n      Tipo: {(NumeroDeRodas == 2 ? "Moto" : "Triciclo")} | Potência: {Potencia} cv";
 
             return mensagem;
         }
