@@ -94,16 +94,6 @@ namespace DEVinCar.System
             Console.WriteLine($"        {camionete}");
         }
 
-        //private static T TratarInput<T>(string mensagem) where T : ISpanFormattable
-        //{
-        //    Console.Write(mensagem);
-        //    bool respostaValida = T.TryParse(Console.ReadLine(), out T output);
-        //    if (!respostaValida)
-        //        throw new InputInvalidoException();
-
-        //    return output;
-        //}
-
         private static DateTime DefinirData(string mensagem)
         {
             Console.Write(mensagem);
