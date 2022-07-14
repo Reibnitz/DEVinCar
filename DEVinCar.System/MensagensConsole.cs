@@ -173,8 +173,10 @@ namespace DEVinCar.System
             Console.WriteLine("     [2] Não");
             Console.Write("\n   Escolha a opção desejada: ");
 
-            int opcaoEscolhida = VerificarInput(limite: 2);
+            string? input = Console.ReadLine();
+            bool respostaValida = int.TryParse(input, out int opcaoEscolhida);
 
+            if (!respostaValida || opcaoEscolhida > 2 || opcaoEscolhida <= 0) return false;
             return opcaoEscolhida == 1 ? true : false;
         }
 
@@ -185,7 +187,7 @@ namespace DEVinCar.System
 
             if (!respostaValida)
                 throw new InputInvalidoException(input);
-            if (opcaoEscolhida > limite)
+            if (opcaoEscolhida > limite || opcaoEscolhida <= 0)
                 throw new OpcaoNaoExistenteException(opcaoEscolhida);
 
             return opcaoEscolhida;
