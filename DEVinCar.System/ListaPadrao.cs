@@ -9,7 +9,7 @@ namespace DEVinCar.System
 {
     public class ListaPadrao
     {
-        internal static void CriarLista(VeiculoFactory veiculoFactory)
+        internal static void CriarLista(IVeiculoFactory veiculoFactory)
         {
             IVeiculo carro1 = veiculoFactory.CriarCarro(120, 4, ETipoCombustivelCarro.Gasolina, "Uno", "CCC-0001", 30000, "Vermelha", DateTime.Now);
             IVeiculo carro2 = veiculoFactory.CriarCarro(100, 2, ETipoCombustivelCarro.Flex, "Ka", "CCC-0002", 40000, "Azul", DateTime.Now);
