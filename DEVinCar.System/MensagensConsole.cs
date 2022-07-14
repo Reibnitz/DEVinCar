@@ -12,6 +12,7 @@ namespace DEVinCar.System
         public static EOpcaoInicial EscolherOpcaoInicial()
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
+            // ASCII art from: https://patorjk.com/software/taag/
             Console.WriteLine
             ("   ___     ___   __   __    _              ___                   \n" +
             "  |   \\   | __|  \\ \\ / /   (_)    _ _     / __|   __ _      _ _\n" +
