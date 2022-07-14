@@ -4,31 +4,19 @@ namespace DEVinCar.System
 {
     public class ControleDeProducao : IControleDeProducao
     {
-        private ChassiService _chassiService;
         private ListagemService _listagemService;
         private List<IVeiculo> _listaDeVeiculos { get; set; }
 
         public IEnumerable<IVeiculo> ListaDeVeiculos { get { return _listaDeVeiculos; } }
 
-        public ControleDeProducao(List<IVeiculo> listaDeVeiculos, ChassiService chassiService, ListagemService listagemService)
+        public ControleDeProducao(List<IVeiculo> listaDeVeiculos, ListagemService listagemService)
         {
-            _listaDeVeiculos = listaDeVeiculos; // new List<IVeiculo>();
-            _chassiService = chassiService;
+            _listaDeVeiculos = listaDeVeiculos;
             _listagemService = listagemService;
         }
 
         public void AdicionarVeiculo(IVeiculo veiculo)
         {
-            int numeroChassi = _chassiService.GerarNumero();
-            bool chassiEhUnico = _chassiService.VerificarNumero(numeroChassi, _listaDeVeiculos);
-
-            while (!chassiEhUnico)
-            {
-                numeroChassi = _chassiService.GerarNumero();
-                chassiEhUnico = _chassiService.VerificarNumero(numeroChassi, _listaDeVeiculos);
-            }
-
-            veiculo.NumeroChassi = numeroChassi;
             _listaDeVeiculos.Add(veiculo);
         }
 

@@ -7,10 +7,9 @@ namespace DEVinCar.System
         public static ControleDeProducao CriarControleDeProducao()
         {
             List<IVeiculo> listaDeVeiculos = new();
-            ChassiService chassiService = new();
             ListagemService listagemService  = new();
 
-             return new ControleDeProducao(listaDeVeiculos, chassiService, listagemService);
+             return new ControleDeProducao(listaDeVeiculos, listagemService);
         }
     }
 }
