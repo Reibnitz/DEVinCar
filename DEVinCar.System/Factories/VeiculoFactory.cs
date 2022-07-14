@@ -1,17 +1,12 @@
 ﻿using DEVinCar.Library;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DEVinCar.System
 {
     public class VeiculoFactory
     {
-        private ControleDeProducao _controleDeProducao;
+        private IControleDeProducao _controleDeProducao;
 
-        public VeiculoFactory(ControleDeProducao controleDeProducao)
+        public VeiculoFactory(IControleDeProducao controleDeProducao)
         {
             _controleDeProducao = controleDeProducao;
         }
@@ -21,7 +16,7 @@ namespace DEVinCar.System
         {
             VerificarData(dataDeFabricacao);
             VerificarSeValorEhPositivo(potencia, numeroDePortas, valor);
-            
+
             Carro carro = new(potencia, numeroDePortas, tipoCombustivel, nome, placa, valor, cor, dataDeFabricacao);
             _controleDeProducao.AdicionarVeiculo(carro);
 
@@ -33,7 +28,7 @@ namespace DEVinCar.System
         {
             VerificarData(dataDeFabricacao);
             VerificarSeValorEhPositivo(potencia, valor);
-            
+
             MotoTriciclo motoTriciclo = new(potencia, numeroDeRodas, nome, placa, valor, cor, dataDeFabricacao);
             _controleDeProducao.AdicionarVeiculo(motoTriciclo);
 
@@ -45,7 +40,7 @@ namespace DEVinCar.System
         {
             VerificarData(dataDeFabricacao);
             VerificarSeValorEhPositivo(potencia, numeroDePortas, valor, capacidadeDaCacamba);
-            
+
             Camionete camionete = new(numeroDePortas, capacidadeDaCacamba, potencia, tipoCombustivel, nome, placa, valor, dataDeFabricacao);
             _controleDeProducao.AdicionarVeiculo(camionete);
 

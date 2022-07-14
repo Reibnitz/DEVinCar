@@ -1,7 +1,7 @@
 ﻿using DEVinCar.Library;
 using DEVinCar.System;
 
-ControleDeProducao controleDeProducao = ControleDeProducaoFactory.CriarControleDeProducao();
+IControleDeProducao controleDeProducao = ControleDeProducaoFactory.CriarControleDeProducao();
 VeiculoFactory veiculoFactory = new(controleDeProducao);
 ListaPadrao.CriarLista(veiculoFactory);
 
@@ -64,6 +64,7 @@ while (continuar)
                         listaFiltrada = controleDeProducao.BuscarListaVendidosPorMaiorPreco();
                     break;
             }
+
             listaFiltrada.ForEach(veiculo => Console.WriteLine(veiculo));
         }
     }

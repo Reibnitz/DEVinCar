@@ -2,7 +2,7 @@
 
 namespace DEVinCar.System
 {
-    public class ControleDeProducao
+    public class ControleDeProducao : IControleDeProducao
     {
         private ChassiService _chassiService;
         private ListagemService _listagemService;

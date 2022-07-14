@@ -1,6 +1,4 @@
-﻿using DEVinCar.Library;
-
-namespace DEVinCar.System
+﻿namespace DEVinCar.Library
 {
     public class ListagemService
     {
