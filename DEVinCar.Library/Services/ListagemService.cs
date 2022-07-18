@@ -14,13 +14,13 @@
             switch (tipoVeiculo)
             {
                 case EVeiculo.Carro:
-                    listaVeiculosPorTipo = listaVeiculos.Where(veiculo => veiculo.GetType() == typeof(Carro)).ToList();
+                    listaVeiculosPorTipo = listaVeiculos.Where(veiculo => veiculo is Carro).ToList();
                     break;
                 case EVeiculo.Camionete:
-                    listaVeiculosPorTipo = listaVeiculos.Where(veiculo => veiculo.GetType() == typeof(Camionete)).ToList();
+                    listaVeiculosPorTipo = listaVeiculos.Where(veiculo => veiculo is Camionete).ToList();
                     break;
                 case EVeiculo.MotoTricilo:
-                    listaVeiculosPorTipo = listaVeiculos.Where(veiculo => veiculo.GetType() == typeof(MotoTriciclo)).ToList();
+                    listaVeiculosPorTipo = listaVeiculos.Where(veiculo => veiculo is MotoTriciclo).ToList();
                     break;
             }
 
