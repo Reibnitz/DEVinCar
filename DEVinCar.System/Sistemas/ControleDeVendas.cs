@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace DEVinCar.System
 {
-    public class SistemaDeVendas
+    public class ControleDeVendas
     {
         private List<IVeiculo> _historico { get; set; }
         public IEnumerable<IVeiculo> Historico { get { return _historico; } }
 
-        public SistemaDeVendas()
+        public ControleDeVendas()
         {
             _historico  = new List<IVeiculo>();
         }
