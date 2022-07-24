@@ -9,17 +9,21 @@ namespace DEVinCar.System
 {
     public class ControleDeVendas
     {
-        private List<IVeiculo> _historico { get; set; }
-        public IEnumerable<IVeiculo> Historico { get { return _historico; } }
+        private List<IVenda> _historico { get; set; } = new List<IVenda>();
+        public IEnumerable<IVenda> Historico { get { return _historico; } }
 
-        public ControleDeVendas()
+        public void AdicionarVenda(IVeiculo veiculo)
         {
-            _historico  = new List<IVeiculo>();
-        }
+            if (veiculo.CpfComprador == 0)
+                throw new VeiculoNaoVendidoException(veiculo.Nome, veiculo.NumeroChassi);
 
-        public void AdicionarVendaAoHistorico(IVeiculo veiculo, int cpfComprador, DateTime dataDaVenda)
-        {
-            _historico.Add(veiculo);
+            string dadosDoVeiculo = veiculo.ToString();
+            int cpfDoComprador = veiculo.CpfComprador;
+            double valor = veiculo.Valor;
+            DateTime dataDeVenda = veiculo.DataDeVenda;
+
+            IVenda registroDeVenda = new Venda(dadosDoVeiculo, cpfDoComprador, valor, dataDeVenda);
+            _historico.Add(registroDeVenda);
         }
     }
 }

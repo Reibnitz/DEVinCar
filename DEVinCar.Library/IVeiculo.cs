@@ -9,7 +9,7 @@
         string Nome { get; }
         string Placa { get; }
         string Cor { get; }
-        DateTime DataDeVenda { get; }
+        DateTime DataDeVenda { get; set; }
         int CpfComprador { get; set; }
 
 

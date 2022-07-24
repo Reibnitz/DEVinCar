@@ -15,7 +15,7 @@ namespace DEVinCar.Library
         public string Cor { get; private set; }
         //
         public int NumeroChassi { get; set; }
-        public DateTime DataDeVenda { get; private set; }
+        public DateTime DataDeVenda { get; set; }
         public int CpfComprador { get; set; }
         public bool FoiVendido { get; private set; }
 
