@@ -14,7 +14,7 @@ namespace DEVinCar.System
 
         public void AdicionarVenda(IVeiculo veiculo)
         {
-            if (veiculo.CpfComprador == 0)
+            if (veiculo.FoiVendido == false)
                 throw new VeiculoNaoVendidoException(veiculo.Nome, veiculo.NumeroChassi);
 
             string dadosDoVeiculo = veiculo.ToString();
