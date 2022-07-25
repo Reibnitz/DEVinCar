@@ -95,6 +95,11 @@ namespace DEVinCar.System
             Console.WriteLine($"        {camionete}");
         }
 
+        public static void ListaVazia()
+        {
+            Console.WriteLine("\n   Não foi encontrado nenhum registro no sistema");
+        }
+
         private static DateTime DefinirData(string mensagem)
         {
             Console.Write(mensagem);

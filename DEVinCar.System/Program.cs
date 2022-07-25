@@ -65,7 +65,10 @@ while (continuar)
                     break;
             }
 
-            listaFiltrada.ForEach(veiculo => Console.WriteLine(veiculo));
+            if (listaFiltrada.Count == 0)
+                MensagensConsole.ListaVazia();
+            else
+                listaFiltrada.ForEach(veiculo => Console.WriteLine(veiculo));
         }
     }
     catch (Exception ex)
